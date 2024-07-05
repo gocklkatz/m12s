@@ -6,10 +6,22 @@ Metaheuristics (m12s) Optimization Framework in Java
 
 Implementation of metaheuristic optimization algorithms in Java
 
-## Links
+## Mathematical Optimization
 
-- Metaheuristic https://en.wikipedia.org/wiki/Metaheuristic
+Metaheuristic https://en.wikipedia.org/wiki/Metaheuristic
+
+### Problems
+
+Quadratic assignment problem 
+
+- https://en.wikipedia.org/wiki/Quadratic_assignment_problem
+- https://www.geeksforgeeks.org/quadratic-assignment-problem-qap/
+
+### Algorithms
+
 - Local Search https://en.wikipedia.org/wiki/Local_search_(optimization)
 - Tabu Search https://en.wikipedia.org/wiki/Tabu_search
 - Simulated Annealing https://en.wikipedia.org/wiki/Simulated_annealing
 - Ant Colony Optimization https://en.wikipedia.org/wiki/Ant_colony_optimization_algorithms
+
+
