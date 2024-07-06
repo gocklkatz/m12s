@@ -12,8 +12,9 @@ Metaheuristic https://en.wikipedia.org/wiki/Metaheuristic
 
 ### Problems
 
-Quadratic assignment problem 
+Assignment problems
 
+- https://en.wikipedia.org/wiki/Assignment_problem
 - https://en.wikipedia.org/wiki/Quadratic_assignment_problem
 - https://www.geeksforgeeks.org/quadratic-assignment-problem-qap/
 
@@ -23,5 +24,3 @@ Quadratic assignment problem
 - Tabu Search https://en.wikipedia.org/wiki/Tabu_search
 - Simulated Annealing https://en.wikipedia.org/wiki/Simulated_annealing
 - Ant Colony Optimization https://en.wikipedia.org/wiki/Ant_colony_optimization_algorithms
-
-

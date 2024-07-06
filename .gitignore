@@ -8,6 +8,13 @@
 .idea/**/dictionaries
 .idea/**/shelf
 
+.idea/**/misc.xml
+.idea/**/modules.xml
+.idea/**/vcs.xml
+.idea/**/jarRepositories.xml
+.idea/**/encodings.xml
+.idea/**/compiler.xml
+
 # AWS User-specific
 .idea/**/aws.xml
 
@@ -51,6 +58,9 @@ cmake-build-*/
 
 # IntelliJ
 out/
+
+# Maven
+target
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
