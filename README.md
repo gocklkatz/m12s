@@ -8,8 +8,10 @@ Implementation of metaheuristic optimization algorithms in Java
 
 ## Mathematical Optimization
 
-[Mathematical optimization](https://en.wikipedia.org/wiki/Mathematical_optimization)
-[Metaheuristic](https://en.wikipedia.org/wiki/Metaheuristic)
+### General
+
+- [Mathematical optimization](https://en.wikipedia.org/wiki/Mathematical_optimization)
+- [Metaheuristic](https://en.wikipedia.org/wiki/Metaheuristic)
 
 ### Problems
 
