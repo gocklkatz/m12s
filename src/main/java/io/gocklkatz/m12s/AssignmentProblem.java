@@ -1,19 +1,26 @@
 package io.gocklkatz.m12s;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class AssignmentProblem {
 
-    List<List<Integer>> matrix;
+    private final List<List<Integer>> matrix;
 
     public AssignmentProblem(List<List<Integer>> matrix) {
         this.matrix = matrix;
     }
 
     public List<Integer> solveAP() {
-        List<Integer> sequence = Arrays.asList(0, 1, 2, 3);
+        List<Integer> firstRow = matrix.getFirst();
+        if(matrix.size() != firstRow.size()) {
+            throw new IllegalArgumentException("Matrix must be square!");
+        }
+
+        List<Integer> sequence = new ArrayList<>();
+        for(int i=0; i<matrix.size(); i++) {
+            sequence.add(i);
+        }
         List<List<Integer>> permutations = Combinatorics.permutations(sequence);
 
         List<Integer> bestSolution = new ArrayList<>();
@@ -31,12 +38,16 @@ public class AssignmentProblem {
 
     private int calcZf(List<Integer> solution) {
         int total = 0;
-        for(int i=0; i<4; i++) {
+        for(int i=0; i<matrix.size(); i++) {
             total += matrix.get(i).get(solution.get(i));
         }
         return total;
     }
 
+    /*
+     * TC1: Non-square matrix
+     * TC2: Best solution for this matrix [1, 0, 2, 3]
+     */
     public static void main(String[] args) {
         List<List<Integer>> matrix = new ArrayList<>();
         matrix.add(List.of(9, 2, 7, 8));
