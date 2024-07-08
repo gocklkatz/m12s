@@ -43,20 +43,4 @@ public class AssignmentProblem {
         }
         return total;
     }
-
-    /*
-     * TC1: Non-square matrix
-     * TC2: Best solution for this matrix [1, 0, 2, 3]
-     */
-    public static void main(String[] args) {
-        List<List<Integer>> matrix = new ArrayList<>();
-        matrix.add(List.of(9, 2, 7, 8));
-        matrix.add(List.of(6, 4, 3, 7));
-        matrix.add(List.of(5, 8, 1, 8));
-        matrix.add(List.of(7, 6, 9, 4));
-
-        AssignmentProblem ap = new AssignmentProblem(matrix);
-        List<Integer> bestSolution = ap.solveAP();
-        System.out.println(bestSolution);
-    }
 }
