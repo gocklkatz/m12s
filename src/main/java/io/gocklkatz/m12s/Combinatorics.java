@@ -2,6 +2,7 @@ package io.gocklkatz.m12s;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import static java.util.Collections.swap;
 
@@ -26,5 +27,19 @@ public class Combinatorics {
             permutationsInternal(sequence, results, index + 1);
             swap(sequence, i, index);
         }
+    }
+
+    public static List<List<Integer>> generateApSample(int n) {
+        Random rand = new Random();
+
+        List<List<Integer>> matrix = new ArrayList<>();
+        for(int i=0; i<n; i++){
+            List<Integer> row = new ArrayList<>();
+            for(int j=0; j<n; j++){
+                row.add(rand.nextInt(10));
+            }
+            matrix.add(row);
+        }
+        return matrix;
     }
 }

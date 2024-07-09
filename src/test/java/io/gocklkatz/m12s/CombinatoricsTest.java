@@ -41,4 +41,14 @@ class CombinatoricsTest {
         assertEquals(24, permutations.size());
         assertEquals(24, new HashSet<>(permutations).size());
     }
+
+    @Test
+    void givenN_whenCallingGenerateSample_shouldGenerateMatrix() {
+        int n = 5;
+        List<List<Integer>> matrix = Combinatorics.generateApSample(n);
+        assertEquals(n, matrix.size());
+        for(List<Integer> row : matrix) {
+            assertEquals(n, row.size());
+        }
+    }
 }
