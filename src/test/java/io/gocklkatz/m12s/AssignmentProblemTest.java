@@ -18,7 +18,7 @@ class AssignmentProblemTest {
         matrix.add(List.of(7, 6, 9, 4));
 
         AssignmentProblem ap = new AssignmentProblem(matrix);
-        List<Integer> bestSolution = ap.solveAP();
+        List<Integer> bestSolution = ap.solveApFullEnumeration();
 
         List<Integer> knownResult = new ArrayList<>(List.of(1, 0, 2, 3));
         assertEquals(bestSolution, knownResult);
@@ -35,7 +35,7 @@ class AssignmentProblemTest {
         AssignmentProblem ap = new AssignmentProblem(matrix);
         IllegalArgumentException thrown = assertThrows(
                 IllegalArgumentException.class,
-                ap::solveAP,
+                ap::solveApFullEnumeration,
                 "IllegalArgumentException to throw, but it didn't"
         );
         assertTrue(thrown.getMessage().contains("Matrix must be square!"));
@@ -47,7 +47,7 @@ class AssignmentProblemTest {
     void maximumInputSizeTest() {
         List<List<Integer>> matrix = Combinatorics.generateApSample(5);
         AssignmentProblem ap = new AssignmentProblem(matrix);
-        List<Integer> bestSolution = ap.solveAP();
+        List<Integer> bestSolution = ap.solveApFullEnumeration();
         System.out.println(bestSolution);
     }
 }

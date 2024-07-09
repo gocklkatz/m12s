@@ -11,7 +11,7 @@ public class AssignmentProblem {
         this.matrix = matrix;
     }
 
-    public List<Integer> solveAP() {
+    public List<Integer> solveApFullEnumeration() {
         for(List<Integer> row : matrix) {
             if (row.size() != matrix.size()) {
                 throw new IllegalArgumentException("Matrix must be square!");
