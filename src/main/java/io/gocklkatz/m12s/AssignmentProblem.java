@@ -12,9 +12,10 @@ public class AssignmentProblem {
     }
 
     public List<Integer> solveAP() {
-        List<Integer> firstRow = matrix.getFirst();
-        if(matrix.size() != firstRow.size()) {
-            throw new IllegalArgumentException("Matrix must be square!");
+        for(List<Integer> row : matrix) {
+            if (row.size() != matrix.size()) {
+                throw new IllegalArgumentException("Matrix must be square!");
+            }
         }
 
         List<Integer> sequence = new ArrayList<>();
