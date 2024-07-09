@@ -40,4 +40,14 @@ class AssignmentProblemTest {
         );
         assertTrue(thrown.getMessage().contains("Matrix must be square!"));
     }
+
+    // TODO Refactor: A Result object has i) List<T> solution and ii) a T targetFunctionValue
+    // TODO n > 10: generateApSample(n) -> OutOfMemoryError: Java heap space :)
+    @Test
+    void maximumInputSizeTest() {
+        List<List<Integer>> matrix = Combinatorics.generateApSample(5);
+        AssignmentProblem ap = new AssignmentProblem(matrix);
+        List<Integer> bestSolution = ap.solveAP();
+        System.out.println(bestSolution);
+    }
 }
