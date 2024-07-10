@@ -11,7 +11,7 @@ public class AssignmentProblem {
         this.matrix = matrix;
     }
 
-    public List<Integer> solveApFullEnumeration() {
+    public Result<Integer> solveApFullEnumeration() {
         for(List<Integer> row : matrix) {
             if (row.size() != matrix.size()) {
                 throw new IllegalArgumentException("Matrix must be square!");
@@ -24,17 +24,18 @@ public class AssignmentProblem {
         }
         List<List<Integer>> permutations = Combinatorics.permutations(sequence);
 
-        List<Integer> bestSolution = new ArrayList<>();
+        Result<Integer> bestResult = null;
         int zfBest = Integer.MAX_VALUE;
         for(List<Integer> solution : permutations) {
             int zfVal = calcZf(solution);
+            //System.out.println(new Result<Integer>(solution, zfVal));
             if(zfVal < zfBest) {
                 zfBest = zfVal;
-                bestSolution = solution;
+                bestResult = new Result<>(solution, zfBest);
             }
         }
 
-        return bestSolution;
+        return bestResult;
     }
 
     private int calcZf(List<Integer> solution) {

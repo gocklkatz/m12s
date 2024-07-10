@@ -18,10 +18,11 @@ class AssignmentProblemTest {
         matrix.add(List.of(7, 6, 9, 4));
 
         AssignmentProblem ap = new AssignmentProblem(matrix);
-        List<Integer> bestSolution = ap.solveApFullEnumeration();
+        Result<Integer> bestResult = ap.solveApFullEnumeration();
 
-        List<Integer> knownResult = new ArrayList<>(List.of(1, 0, 2, 3));
-        assertEquals(bestSolution, knownResult);
+        Result<Integer> knownResult = new Result<>(List.of(1, 0, 2, 3), 13);
+
+        assertEquals(bestResult, knownResult);
     }
 
     @Test
@@ -41,13 +42,13 @@ class AssignmentProblemTest {
         assertTrue(thrown.getMessage().contains("Matrix must be square!"));
     }
 
-    // TODO Refactor: A Result object has i) List<T> solution and ii) a T targetFunctionValue
-    // TODO n > 10: generateApSample(n) -> OutOfMemoryError: Java heap space :)
+    /*
     @Test
     void maximumInputSizeTest() {
-        List<List<Integer>> matrix = Combinatorics.generateApSample(5);
+        List<List<Integer>> matrix = Combinatorics.generateApSample(10);
         AssignmentProblem ap = new AssignmentProblem(matrix);
-        List<Integer> bestSolution = ap.solveApFullEnumeration();
+        Result<Integer> bestSolution = ap.solveApFullEnumeration();
         System.out.println(bestSolution);
     }
+     */
 }
