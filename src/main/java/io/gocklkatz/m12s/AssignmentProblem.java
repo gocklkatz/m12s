@@ -38,6 +38,33 @@ public class AssignmentProblem {
         return bestResult;
     }
 
+    public Result<Integer> solveApGreedyHeuristic() {
+        for(List<Integer> row : matrix) {
+            if (row.size() != matrix.size()) {
+                throw new IllegalArgumentException("Matrix must be square!");
+            }
+        }
+
+        List<Integer> solution = new ArrayList<>();
+        for(List<Integer> row : matrix) {
+
+            int bestI = Integer.MAX_VALUE;
+            int currentZfVal = Integer.MAX_VALUE;
+
+            for(int i=0; i<row.size(); i++) {
+                if(!solution.contains(i)) {
+                    if(row.get(i)<currentZfVal){
+                        currentZfVal = row.get(i);
+                        bestI = i;
+                    }
+                }
+            }
+            solution.add(bestI);
+        }
+
+        return new Result<>(solution, calcZf(solution));
+    }
+
     private int calcZf(List<Integer> solution) {
         int total = 0;
         for(int i=0; i<matrix.size(); i++) {

@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class AssignmentProblemTest {
 
     @Test
-    void givenCertainMatrix_whenCallingSolve_shouldGiveKnownAnswer() {
+    void givenCertainMatrix_whenCallingSolveFullEnum_shouldGiveKnownAnswer() {
         List<List<Integer>> matrix = new ArrayList<>();
         matrix.add(List.of(9, 2, 7, 8));
         matrix.add(List.of(6, 4, 3, 7));
@@ -21,8 +21,7 @@ class AssignmentProblemTest {
         Result<Integer> bestResult = ap.solveApFullEnumeration();
 
         Result<Integer> knownResult = new Result<>(List.of(1, 0, 2, 3), 13);
-
-        assertEquals(bestResult, knownResult);
+        assertEquals(knownResult, bestResult);
     }
 
     @Test
@@ -40,6 +39,21 @@ class AssignmentProblemTest {
                 "IllegalArgumentException to throw, but it didn't"
         );
         assertTrue(thrown.getMessage().contains("Matrix must be square!"));
+    }
+
+    @Test
+    void givenCertainMatrix_whenCallingSolveGreedy_shouldGiveKnownAnswer() {
+        List<List<Integer>> matrix = new ArrayList<>();
+        matrix.add(List.of(9, 2, 7, 8));
+        matrix.add(List.of(6, 4, 3, 7));
+        matrix.add(List.of(5, 8, 1, 8));
+        matrix.add(List.of(7, 6, 9, 4));
+
+        AssignmentProblem ap = new AssignmentProblem(matrix);
+        Result<Integer> bestResult = ap.solveApGreedyHeuristic();
+
+        Result<Integer> knownResult = new Result<>(List.of(1, 2, 0, 3), 14);
+        assertEquals(knownResult, bestResult);
     }
 
     /*

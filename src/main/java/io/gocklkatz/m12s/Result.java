@@ -17,7 +17,7 @@ import java.util.Objects;
     Q/A
     - Why do I need heuristics/meta-heurstics? -> x
     - Is assignment problem (AP) an x?
-    - Solution methods for the AP. (Hungarian)
+    - Solution methods for the AP
       # Brute force. n! permutations
       # Greedy algorithm (heuristic)
       # Hungarian method (?)
