@@ -3,25 +3,6 @@ package io.gocklkatz.m12s;
 import java.util.List;
 import java.util.Objects;
 
-/*
-    Objective function (Zielfunktion)
-
-    The function f is called, variously, an objective function, criterion function a loss function or
-    cost function (minimization),[6] a utility function or fitness function (maximization), or, in
-    certain fields, an energy function or energy functional.
-
-    A feasible solution that minimizes (or maximizes, if that is the goal) the objective function is
-    called an optimal solution.
-
-    ---
-    Q/A
-    - Why do I need heuristics/meta-heurstics? -> x
-    - Is assignment problem (AP) an x?
-    - Solution methods for the AP
-      # Brute force. n! permutations
-      # Greedy algorithm (heuristic)
-      # Hungarian method (?)
- */
 public class Result<T> {
 
     private final List<T> solutionVector;
