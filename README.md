@@ -12,3 +12,7 @@ Implementation of metaheuristic optimization algorithms in Java
 - [Metaheuristic](https://en.wikipedia.org/wiki/Metaheuristic)
 - [Knapsack problem](https://en.wikipedia.org/wiki/Knapsack_problem)
 - [Simulated Annealing](https://en.wikipedia.org/wiki/Simulated_annealing)
+
+## Wiki
+
+See [Wiki](https://github.com/gocklkatz/m12s/wiki) for more information
