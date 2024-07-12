@@ -16,6 +16,7 @@ public class Combinatorics {
         return results;
     }
 
+    // Also see https://en.wikipedia.org/wiki/Heap%27s_algorithm
     private static void permutationsInternal(List<Integer> sequence, List<List<Integer>> results, int index) {
         if (index == sequence.size() - 1) {
             results.add(new ArrayList<>(sequence));
