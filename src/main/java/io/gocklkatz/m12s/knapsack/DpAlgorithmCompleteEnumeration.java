@@ -1,4 +1,4 @@
-package io.gocklkatz.daypacker;
+package io.gocklkatz.m12s.knapsack;
 
 import org.apache.commons.math3.linear.Array2DRowRealMatrix;
 import org.apache.commons.math3.linear.RealMatrix;

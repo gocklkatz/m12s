@@ -1,4 +1,4 @@
-package io.gocklkatz.m12s;
+package io.gocklkatz.m12s.utils;
 
 import org.junit.jupiter.api.Test;
 

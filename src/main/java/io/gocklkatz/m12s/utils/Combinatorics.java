@@ -1,4 +1,4 @@
-package io.gocklkatz.m12s;
+package io.gocklkatz.m12s.utils;
 
 import java.util.ArrayList;
 import java.util.List;

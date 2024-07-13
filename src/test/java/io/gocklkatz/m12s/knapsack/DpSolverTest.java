@@ -1,5 +1,6 @@
-package io.gocklkatz.daypacker;
+package io.gocklkatz.m12s.knapsack;
 
+import io.gocklkatz.m12s.knapsack.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

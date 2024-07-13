@@ -1,4 +1,4 @@
-package io.gocklkatz.daypacker;
+package io.gocklkatz.m12s.knapsack;
 
 public class Food {
 

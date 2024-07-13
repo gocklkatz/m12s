@@ -1,4 +1,6 @@
-package io.gocklkatz.m12s;
+package io.gocklkatz.m12s.assignment;
+
+import io.gocklkatz.m12s.utils.Combinatorics;
 
 import java.util.ArrayList;
 import java.util.List;
