@@ -12,7 +12,7 @@ public class DpAlgorithmCompleteEnumeration implements DpAlgorithm {
     public Result solve(List<Food> foods, int maxCost, Comparator<Food> comp) {
         double bestBenefit = 0;
         double bestCost = 0;
-        double[] bestDecisionVariables = null;
+        double[] bestDecisionVariables = new double[0];
 
         // Fill benefitCost matrix
         double[][] benefitCost = new double[foods.size()][2];
