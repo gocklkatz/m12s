@@ -28,7 +28,6 @@ public class AssignmentProblem {
         int zfBest = Integer.MAX_VALUE;
         for(List<Integer> solution : permutations) {
             int zfVal = calcZf(solution);
-            //System.out.println(new Result<Integer>(solution, zfVal));
             if(zfVal < zfBest) {
                 zfBest = zfVal;
                 bestResult = new Result<>(solution, zfBest);
