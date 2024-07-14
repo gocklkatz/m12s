@@ -1,6 +1,6 @@
 package io.gocklkatz.m12s.tsp;
 
-import io.gocklkatz.m12s.utils.Combinatorics;
+import io.gocklkatz.m12s.utils.CombinatoricHelper;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public class Solver {
     }
 
     public void solve() {
-        List<List<Integer>> permutations = Combinatorics.
+        List<List<Integer>> permutations = CombinatoricHelper.
                 permutationsFromToexcl(1, distanceMatrix.length);
 
         for(List<Integer> tour : permutations) {

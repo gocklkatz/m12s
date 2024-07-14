@@ -8,14 +8,14 @@ import static java.util.Collections.swap;
 
 // https://www.baeldung.com/java-combinatorial-algorithms
 // https://github.com/eugenp/tutorials/blob/afdc50e4d59306574a48a3470abb3b262d6abba0/algorithms-modules/algorithms-miscellaneous-5/src/main/java/com/baeldung/algorithms/combinatorics/Combinatorics.java
-public class Combinatorics {
+public class CombinatoricHelper {
 
     public static List<List<Integer>> permutationsFromToexcl(int from, int toExcl) {
         List<Integer> sequence = new ArrayList<>();
         for(int i=from; i<toExcl; i++) {
             sequence.add(i);
         }
-        return Combinatorics.permutations(sequence);
+        return CombinatoricHelper.permutations(sequence);
     }
 
     public static List<List<Integer>> permutations(List<Integer> sequence) {

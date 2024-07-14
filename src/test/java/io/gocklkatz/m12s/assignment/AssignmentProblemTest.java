@@ -59,7 +59,7 @@ class AssignmentProblemTest {
     /*
     @Test
     void maximumInputSizeTest() {
-        List<List<Integer>> matrix = Combinatorics.generateApSample(10);
+        List<List<Integer>> matrix = CombinatoricHelper.generateApSample(10);
         AssignmentProblem ap = new AssignmentProblem(matrix);
         Result<Integer> bestSolution = ap.solveApFullEnumeration();
         System.out.println(bestSolution);

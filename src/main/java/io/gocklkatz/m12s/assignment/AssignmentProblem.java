@@ -1,6 +1,6 @@
 package io.gocklkatz.m12s.assignment;
 
-import io.gocklkatz.m12s.utils.Combinatorics;
+import io.gocklkatz.m12s.utils.CombinatoricHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +20,7 @@ public class AssignmentProblem {
             }
         }
 
-        List<List<Integer>> permutations = Combinatorics.
+        List<List<Integer>> permutations = CombinatoricHelper.
                 permutationsFromToexcl(0, matrix.size());
 
         Result<Integer> bestResult = null;
