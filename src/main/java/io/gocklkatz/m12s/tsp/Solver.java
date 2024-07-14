@@ -2,7 +2,6 @@ package io.gocklkatz.m12s.tsp;
 
 import io.gocklkatz.m12s.utils.Combinatorics;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Solver {
