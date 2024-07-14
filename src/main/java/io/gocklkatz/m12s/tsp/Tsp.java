@@ -1,10 +1,12 @@
 package io.gocklkatz.m12s.tsp;
 
+import java.util.List;
+
 public class Tsp {
     private int id;
     private int[][] distanceMatrix;
     private int cost;
-    private String tour;
+    private List<Integer> tour;
 
     public Tsp(int id, int[][] distanceMatrix) {
         this.id = id;
@@ -42,11 +44,11 @@ public class Tsp {
         this.cost = cost;
     }
 
-    public String getTour() {
+    public List<Integer> getTour() {
         return tour;
     }
 
-    public void setTour(String tour) {
+    public void setTour(List<Integer> tour) {
         this.tour = tour;
     }
 

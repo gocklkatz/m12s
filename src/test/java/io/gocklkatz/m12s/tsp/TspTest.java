@@ -2,6 +2,8 @@ package io.gocklkatz.m12s.tsp;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class TspTest {
@@ -12,7 +14,7 @@ class TspTest {
         Tsp tsp = service.findOne(1);
         tsp.solve();
 
-        assertEquals("1324", tsp.getTour());
+        assertEquals(List.of(1, 3, 2, 4), tsp.getTour());
         assertEquals(8, tsp.getCost());
     }
 }

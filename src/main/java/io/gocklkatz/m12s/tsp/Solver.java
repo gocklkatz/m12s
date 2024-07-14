@@ -1,11 +1,14 @@
 package io.gocklkatz.m12s.tsp;
 
+import io.gocklkatz.m12s.utils.Combinatorics;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Solver {
 
-    private int[][] distanceMatrix;
-    private String tour;
+    private final int[][] distanceMatrix;
+    private List<Integer> tour;
     private int cost = Integer.MAX_VALUE;
 
     public Solver(int[][] distanceMatrix) {
@@ -13,21 +16,16 @@ public class Solver {
     }
 
     public void solve() {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 1; i < distanceMatrix.length; i++) {
-            sb.append(i);
+        List<Integer> sequence = new ArrayList<>();
+        for(int i=1; i<distanceMatrix.length; i++) {
+            sequence.add(i);
         }
+        List<List<Integer>> permutations = Combinatorics.permutations(sequence);
 
-        int n = sb.length();
-        Permutation permutation = new Permutation();
-        permutation.permute(sb.toString(), 0, n-1);
-        List<String> tours = permutation.getTours();
-
-        for(String tour : tours) {
+        for(List<Integer> tour : permutations) {
             int tmpCost = 0;
             int prev = 0;
-            for (int i = 0; i < tour.length(); i++) {
-                int next = Character.getNumericValue(tour.charAt(i));
+            for (int next : tour) {
                 tmpCost += distanceMatrix[prev][next];
                 prev = next;
             }
@@ -40,7 +38,7 @@ public class Solver {
         }
     }
 
-    public String getTour() {
+    public List<Integer> getTour() {
         return tour;
     }
 
