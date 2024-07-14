@@ -20,11 +20,8 @@ public class AssignmentProblem {
             }
         }
 
-        List<Integer> sequence = new ArrayList<>();
-        for(int i=0; i<matrix.size(); i++) {
-            sequence.add(i);
-        }
-        List<List<Integer>> permutations = Combinatorics.permutations(sequence);
+        List<List<Integer>> permutations = Combinatorics.
+                permutationsFromToexcl(0, matrix.size());
 
         Result<Integer> bestResult = null;
         int zfBest = Integer.MAX_VALUE;

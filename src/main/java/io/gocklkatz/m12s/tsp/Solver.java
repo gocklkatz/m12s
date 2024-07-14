@@ -16,11 +16,8 @@ public class Solver {
     }
 
     public void solve() {
-        List<Integer> sequence = new ArrayList<>();
-        for(int i=1; i<distanceMatrix.length; i++) {
-            sequence.add(i);
-        }
-        List<List<Integer>> permutations = Combinatorics.permutations(sequence);
+        List<List<Integer>> permutations = Combinatorics.
+                permutationsFromToexcl(1, distanceMatrix.length);
 
         for(List<Integer> tour : permutations) {
             int tmpCost = 0;
