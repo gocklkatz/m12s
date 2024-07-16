@@ -1,6 +1,8 @@
 package io.gocklkatz.m12s.knapsack;
 
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -10,6 +12,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DpSolverTest {
 
+
+    private static final Logger logger = LoggerFactory.getLogger(DpSolverTest.class);
+
     @Test
     void solveKnapsackComplete() {
         List<Food> foods = buildMenu();
@@ -17,7 +22,7 @@ class DpSolverTest {
         DpSolver solver = new DpSolver(new DpAlgorithmCompleteEnumeration());
         Result resultBenefit = solver.solve(foods, 750, Comparator.comparingInt(Food::benefit));
 
-        //printOutResult(resultBenefit);
+        printOutResult(resultBenefit);
         assertEquals(353, resultBenefit.getTotalBenefit());
         assertEquals(685, resultBenefit.getTotalCost());
     }
@@ -60,10 +65,9 @@ class DpSolverTest {
     }
 
     private void printOutResult(Result result) {
-        System.out.println("Result:");
-        result.getFoods().forEach(System.out::println);
-        System.out.println("Total benefit: " + result.getTotalBenefit());
-        System.out.println("Total cost: " + result.getTotalCost());
-        System.out.println("---");
+        logger.info("Result:");
+        logger.info("Total benefit: {}", result.getTotalBenefit());
+        logger.info("Total cost: {}", result.getTotalCost());
+        logger.info("---");
     }
 }

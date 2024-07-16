@@ -14,6 +14,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit-jupiter-engine.version>5.10.2</junit-jupiter-engine.version>
         <commons-math3.version>3.6.1</commons-math3.version>
+        <logback-classic.version>1.5.6</logback-classic.version>
+        <jakarta-xml-bind-api.version>4.0.2</jakarta-xml-bind-api.version>
+        <jaxb-impl.version>4.0.5</jaxb-impl.version>
     </properties>
 
     <dependencies>
@@ -22,6 +25,24 @@
             <artifactId>commons-math3</artifactId>
             <version>${commons-math3.version}</version>
         </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback-classic.version}</version>
+        </dependency>
+
+        <!-- https://blog.viadee.de/java-11-update-jdk-jaxb-und-wie-geht-es-weiter -->
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>${jakarta-xml-bind-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>${jaxb-impl.version}</version>
+        </dependency>
+
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>

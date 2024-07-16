@@ -59,7 +59,6 @@ public class DpAlgorithmCompleteEnumeration implements DpAlgorithm {
                 resultList.add(foods.get(i));
             }
         }
-        //resultList.forEach(System.out::println);
 
         Result result = new Result();
         result.setTotalBenefit((int) bestBenefit);

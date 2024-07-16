@@ -62,7 +62,7 @@ class AssignmentProblemTest {
         List<List<Integer>> matrix = CombinatoricHelper.generateApSample(10);
         AssignmentProblem ap = new AssignmentProblem(matrix);
         Result<Integer> bestSolution = ap.solveApFullEnumeration();
-        System.out.println(bestSolution);
+        logger.info(bestSolution);
     }
      */
 }
