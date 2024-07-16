@@ -4,11 +4,13 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ReadTspLibInstancesTest {
+class TspLibInstancesTest {
 
     @Test
     void givenTspLibInstanceName_whenCallingReadTspLibInstances_ShouldReturnInstanceAsArray() {
-        int[][] ret = ReadTspLibInstances.readTspLibInstance("br17.xml");
-        assertEquals(0, ret.length);
+
+        TspLibInstances tspLibInstances = new TspLibInstances("br17.xml");
+        double[][] ret = tspLibInstances.getTspLibInstanceAsArray();
+        assertEquals(17, ret.length);
     }
 }
