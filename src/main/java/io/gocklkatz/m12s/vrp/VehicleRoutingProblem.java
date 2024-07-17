@@ -13,6 +13,20 @@ public class VehicleRoutingProblem {
         checkMatrix();
     }
 
+    public Solution solveCompleteEnumeration(){
+
+        /*
+           Assignment Problem
+             1) All combinations of 011100,100011
+               - All possible x = 000000 to 111111 and complement binary 111111 - x except 000000 and 111111
+             2) The power set and its complement
+           Routing Problem
+             All permutations of 3,4,5 and 1,2,6
+         */
+
+        return new Solution(new ArrayList<>(), new ArrayList<>());
+    }
+
     public Solution singleSolution() {
         List<Integer> route1 = new ArrayList<>(List.of(3, 4, 5));
         List<Integer> route2 = new ArrayList<>(List.of(6, 1, 2));

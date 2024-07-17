@@ -43,6 +43,15 @@ class CombinatoricHelperTest {
     }
 
     @Test
+    void givenThreeElementsSequence_whenCallingPowerSet_ShouldReturnEightEntries() {
+        List<Character> sequence = Arrays.asList('a', 'b', 'c');
+
+        List<List<Character>> powerSet = CombinatoricHelper.generatePowerSet(sequence);
+
+        assertEquals(8, powerSet.size());
+    }
+
+    @Test
     void givenN_whenCallingGenerateSample_shouldGenerateMatrix() {
         int n = 5;
         List<List<Integer>> matrix = CombinatoricHelper.generateApSample(n);

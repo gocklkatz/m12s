@@ -10,6 +10,11 @@ import static java.util.Collections.swap;
 // https://github.com/eugenp/tutorials/blob/afdc50e4d59306574a48a3470abb3b262d6abba0/algorithms-modules/algorithms-miscellaneous-5/src/main/java/com/baeldung/algorithms/combinatorics/Combinatorics.java
 public class CombinatoricHelper {
 
+    /*
+     * Permutations
+     * - A permutation is an act of rearranging a sequence in such a way that it has a different order.
+     * - For a sequence of n elements, there are n! different permutations.
+     */
     public static List<List<Integer>> permutationsFromToexcl(int from, int toExcl) {
         List<Integer> sequence = new ArrayList<>();
         for(int i=from; i<toExcl; i++) {
@@ -38,6 +43,33 @@ public class CombinatoricHelper {
         }
     }
 
+    /*
+     * Power set
+     * - The power set of set S is the set of all subsets of S including the empty set and S itself.
+     * - The power set contains 2^n subsets.
+     */
+
+    public static List<List<Character>> generatePowerSet(List<Character> sequence) {
+        List<List<Character>> powerSet = new ArrayList<>();
+        powerSetInternal(sequence, powerSet, new ArrayList<>(), 0);
+        return powerSet;
+    }
+
+    private static void powerSetInternal(List<Character> set, List<List<Character>> powerSet,
+                                         List<Character> accumulator, int index) {
+        if (index == set.size()) {
+            powerSet.add(new ArrayList<>(accumulator));
+        } else {
+            accumulator.add(set.get(index));
+            powerSetInternal(set, powerSet, accumulator, index + 1);
+            accumulator.removeLast();
+            powerSetInternal(set, powerSet, accumulator, index + 1);
+        }
+    }
+
+    /*
+     * Generate n by n matrix with random values 0 <= x < 10
+     */
     public static List<List<Integer>> generateApSample(int n) {
         Random rand = new Random();
 
