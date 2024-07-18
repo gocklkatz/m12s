@@ -15,16 +15,52 @@ public class VehicleRoutingProblem {
 
     public Solution solveCompleteEnumeration(){
 
-        /*
-           Assignment Problem
-             1) All combinations of 011100,100011
-               - All possible x = 000000 to 111111 and complement binary 111111 - x except 000000 and 111111
-             2) The power set and its complement
-           Routing Problem
-             All permutations of 3,4,5 and 1,2,6
-         */
+        Solution bestSolution = new Solution(new ArrayList<>(), new ArrayList<>());
+        bestSolution.setObjectiveFunctionValue(Double.MAX_VALUE);
 
-        return new Solution(new ArrayList<>(), new ArrayList<>());
+        int length = 6;
+        int numberOfElements = (int) Math.pow(2,length);
+        for(int i=1; i<numberOfElements-1; i++) {
+            //TODO The "convert to binary" parts are awfully similar
+            String unpaddedBinaryString1 = Integer.toBinaryString(i);
+            String paddedBinaryString1 = String.
+                    format("%1$" + length + "s", unpaddedBinaryString1).
+                    replace(' ', '0');
+
+            List<Integer> route1 = generateTour(paddedBinaryString1);
+
+            int j = numberOfElements - i - 1;
+            String unpaddedBinaryString2 = Integer.toBinaryString(j);
+            String paddedBinaryString2 = String.
+                    format("%1$" + length + "s", unpaddedBinaryString2).
+                    replace(' ', '0');
+
+            List<Integer> route2 = generateTour(paddedBinaryString2);
+
+            //TODO All permutation for route2 for each permutation of route1
+
+            Solution solution = new Solution(route1, route2);
+            solution.setObjectiveFunctionValue(calcZf(solution));
+
+            if(solution.getObjectiveFunctionValue() < bestSolution.getObjectiveFunctionValue()) {
+                bestSolution = solution;
+            }
+        }
+
+        return bestSolution;
+    }
+
+    private static List<Integer> generateTour(String assignment) {
+        List<Integer> tour = new ArrayList<>();
+
+        for(int i=assignment.length()-1; i>=0; i--) {
+            int active = Integer.parseInt(assignment.substring(i,i+1));
+            if(active == 1) {
+                tour.add(assignment.length()-i);
+            }
+        }
+
+        return tour;
     }
 
     public Solution singleSolution() {
