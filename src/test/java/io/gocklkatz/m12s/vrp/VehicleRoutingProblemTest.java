@@ -42,8 +42,8 @@ class VehicleRoutingProblemTest {
         VehicleRoutingProblem vrp = new VehicleRoutingProblem(matrix);
         Solution solution = vrp.solveCompleteEnumeration();
 
-        assertEquals(List.of(2, 5), solution.getRoute1());
-        assertEquals(List.of(1, 3, 4, 6), solution.getRoute2());
-        assertEquals(solution.getObjectiveFunctionValue(), 151);
+        assertEquals(List.of(5), solution.getRoute1());
+        assertEquals(List.of(3, 1, 2, 6, 4), solution.getRoute2());
+        assertEquals(solution.getObjectiveFunctionValue(), 137);
     }
 }

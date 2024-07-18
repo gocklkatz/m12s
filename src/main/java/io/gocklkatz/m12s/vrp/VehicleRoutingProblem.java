@@ -1,5 +1,7 @@
 package io.gocklkatz.m12s.vrp;
 
+import io.gocklkatz.m12s.utils.CombinatoricHelper;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -37,13 +39,20 @@ public class VehicleRoutingProblem {
 
             List<Integer> route2 = generateTour(paddedBinaryString2);
 
-            //TODO All permutation for route2 for each permutation of route1
+            //All permutation for route2 for each permutation of route1
+            List<List<Integer>> permutations1 = CombinatoricHelper.permutations(route1);
+            for(List<Integer> route1Perm : permutations1) {
 
-            Solution solution = new Solution(route1, route2);
-            solution.setObjectiveFunctionValue(calcZf(solution));
+                List<List<Integer>> permutations2 = CombinatoricHelper.permutations(route2);
+                for(List<Integer> route2Perm : permutations2) {
 
-            if(solution.getObjectiveFunctionValue() < bestSolution.getObjectiveFunctionValue()) {
-                bestSolution = solution;
+                    Solution solution = new Solution(route1Perm, route2Perm);
+                    solution.setObjectiveFunctionValue(calcZf(solution));
+
+                    if(solution.getObjectiveFunctionValue() < bestSolution.getObjectiveFunctionValue()) {
+                        bestSolution = solution;
+                    }
+                }
             }
         }
 
