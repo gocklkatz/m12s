@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class VehicleRoutingProblemTest {
 
     @Test
-    void givenCertainMatrix_whenCallingSingleSolution_shouldGiveKnownAnswer() {
+    void givenCertainMatrix_whenCallingSingleSolution_NoCapacityConstraint_shouldGiveKnownAnswer() {
         //https://www.youtube.com/watch?v=A1wsIFDKqBk&t=362s
         List<List<Integer>> matrix = new ArrayList<>();
         matrix.add(List.of(0,  20, 18, 14, 16, 12, 19));
@@ -22,13 +22,13 @@ class VehicleRoutingProblemTest {
         matrix.add(List.of(19, 28, 21, 21, 22, 26,  0));
 
         VehicleRoutingProblem vrp = new VehicleRoutingProblem(matrix);
-        Solution solution = vrp.singleSolution();
+        Solution solution = vrp.singleSolutionNoCapacityConstraint();
 
         assertEquals(solution.getObjectiveFunctionValue(), 163);
     }
 
     @Test
-    void givenCertainMatrix_whenCallingSolveCompleteEnumeration_shouldGiveKnownAnswer() {
+    void givenCertainMatrix_whenCallingSolveCompleteEnumeration_NoCapacityConstraint_shouldGiveKnownAnswer() {
         //https://www.youtube.com/watch?v=A1wsIFDKqBk&t=362s
         List<List<Integer>> matrix = new ArrayList<>();
         matrix.add(List.of(0,  20, 18, 14, 16, 12, 19));
@@ -40,10 +40,11 @@ class VehicleRoutingProblemTest {
         matrix.add(List.of(19, 28, 21, 21, 22, 26,  0));
 
         VehicleRoutingProblem vrp = new VehicleRoutingProblem(matrix);
-        Solution solution = vrp.solveCompleteEnumeration();
+        Solution solution = vrp.solveCompleteEnumerationNoCapacityConstraint();
 
         assertEquals(List.of(5), solution.getRoute1());
         assertEquals(List.of(3, 1, 2, 6, 4), solution.getRoute2());
-        assertEquals(solution.getObjectiveFunctionValue(), 137);
+        assertEquals(137, solution.getObjectiveFunctionValue());
     }
+
 }

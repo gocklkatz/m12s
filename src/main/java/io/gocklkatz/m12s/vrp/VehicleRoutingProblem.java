@@ -15,7 +15,12 @@ public class VehicleRoutingProblem {
         checkMatrix();
     }
 
-    public Solution solveCompleteEnumeration(){
+    /*
+     * **Improvements**
+     * - Solve for n vehicles
+     */
+
+    public Solution solveCompleteEnumerationNoCapacityConstraint(){
 
         Solution bestSolution = new Solution(new ArrayList<>(), new ArrayList<>());
         bestSolution.setObjectiveFunctionValue(Double.MAX_VALUE);
@@ -32,28 +37,22 @@ public class VehicleRoutingProblem {
             String paddedBinaryString2 = generatePaddedBinaryString(numberOfElements - i - 1, length);
             List<Integer> route2 = generateTour(paddedBinaryString2);
 
-            //For each permutation of route1
-            List<List<Integer>> permutations1 = CombinatoricHelper.permutations(route1);
-            for(List<Integer> route1Perm : permutations1) {
+            TspSolver tspSolver = new TspSolver(distanceMatrix);
+            List<Integer> bestTour1 = tspSolver.solve(route1);
+            List<Integer> bestTour2 = tspSolver.solve(route2);
 
-                //For each permutation for route2
-                List<List<Integer>> permutations2 = CombinatoricHelper.permutations(route2);
-                for(List<Integer> route2Perm : permutations2) {
+            Solution solution = new Solution(bestTour1, bestTour2);
+            solution.setObjectiveFunctionValue(calcZf(solution));
 
-                    Solution solution = new Solution(route1Perm, route2Perm);
-                    solution.setObjectiveFunctionValue(calcZf(solution));
-
-                    if(solution.getObjectiveFunctionValue() < bestSolution.getObjectiveFunctionValue()) {
-                        bestSolution = solution;
-                    }
-                }
+            if(solution.getObjectiveFunctionValue() < bestSolution.getObjectiveFunctionValue()) {
+                bestSolution = solution;
             }
         }
 
         return bestSolution;
     }
 
-    public Solution singleSolution() {
+    public Solution singleSolutionNoCapacityConstraint() {
         List<Integer> route1 = new ArrayList<>(List.of(3, 4, 5));
         List<Integer> route2 = new ArrayList<>(List.of(6, 1, 2));
         Solution solution = new Solution(route1, route2);
