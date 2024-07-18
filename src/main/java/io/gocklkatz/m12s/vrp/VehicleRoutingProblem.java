@@ -22,27 +22,21 @@ public class VehicleRoutingProblem {
 
         int length = 6;
         int numberOfElements = (int) Math.pow(2,length);
-        for(int i=1; i<numberOfElements-1; i++) {
-            //TODO The "convert to binary" parts are awfully similar
-            String unpaddedBinaryString1 = Integer.toBinaryString(i);
-            String paddedBinaryString1 = String.
-                    format("%1$" + length + "s", unpaddedBinaryString1).
-                    replace(' ', '0');
 
+        //For each possible assignment to route1 and route2
+        for(int i=1; i<numberOfElements-1; i++) {
+
+            String paddedBinaryString1 = generatePaddedBinaryString(i, length);
             List<Integer> route1 = generateTour(paddedBinaryString1);
 
-            int j = numberOfElements - i - 1;
-            String unpaddedBinaryString2 = Integer.toBinaryString(j);
-            String paddedBinaryString2 = String.
-                    format("%1$" + length + "s", unpaddedBinaryString2).
-                    replace(' ', '0');
-
+            String paddedBinaryString2 = generatePaddedBinaryString(numberOfElements - i - 1, length);
             List<Integer> route2 = generateTour(paddedBinaryString2);
 
-            //All permutation for route2 for each permutation of route1
+            //For each permutation of route1
             List<List<Integer>> permutations1 = CombinatoricHelper.permutations(route1);
             for(List<Integer> route1Perm : permutations1) {
 
+                //For each permutation for route2
                 List<List<Integer>> permutations2 = CombinatoricHelper.permutations(route2);
                 for(List<Integer> route2Perm : permutations2) {
 
@@ -59,7 +53,25 @@ public class VehicleRoutingProblem {
         return bestSolution;
     }
 
-    private static List<Integer> generateTour(String assignment) {
+    public Solution singleSolution() {
+        List<Integer> route1 = new ArrayList<>(List.of(3, 4, 5));
+        List<Integer> route2 = new ArrayList<>(List.of(6, 1, 2));
+        Solution solution = new Solution(route1, route2);
+
+        solution.setObjectiveFunctionValue(calcZf(solution));
+
+        return solution;
+    }
+
+    private String generatePaddedBinaryString(int i, int length) {
+        String unpaddedBinaryString = Integer.toBinaryString(i);
+        String paddedBinaryString = String.
+                format("%1$" + length + "s", unpaddedBinaryString).
+                replace(' ', '0');
+        return paddedBinaryString;
+    }
+
+    private List<Integer> generateTour(String assignment) {
         List<Integer> tour = new ArrayList<>();
 
         for(int i=assignment.length()-1; i>=0; i--) {
@@ -70,16 +82,6 @@ public class VehicleRoutingProblem {
         }
 
         return tour;
-    }
-
-    public Solution singleSolution() {
-        List<Integer> route1 = new ArrayList<>(List.of(3, 4, 5));
-        List<Integer> route2 = new ArrayList<>(List.of(6, 1, 2));
-        Solution solution = new Solution(route1, route2);
-
-        solution.setObjectiveFunctionValue(calcZf(solution));
-
-        return solution;
     }
 
     private double calcZf(Solution solution) {
