@@ -1,7 +1,5 @@
 package io.gocklkatz.m12s.vrp;
 
-import io.gocklkatz.m12s.utils.CombinatoricHelper;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -15,11 +13,6 @@ public class VehicleRoutingProblem {
         checkMatrix();
     }
 
-    /*
-     * **Improvements**
-     * - Solve for n vehicles
-     */
-
     public Solution solveCompleteEnumerationNoCapacityConstraint(){
 
         Solution bestSolution = new Solution(new ArrayList<>(), new ArrayList<>());
@@ -28,7 +21,6 @@ public class VehicleRoutingProblem {
         int length = 6;
         int numberOfElements = (int) Math.pow(2,length);
 
-        //For each possible assignment to route1 and route2
         for(int i=1; i<numberOfElements-1; i++) {
 
             String paddedBinaryString1 = generatePaddedBinaryString(i, length);
@@ -64,10 +56,9 @@ public class VehicleRoutingProblem {
 
     private String generatePaddedBinaryString(int i, int length) {
         String unpaddedBinaryString = Integer.toBinaryString(i);
-        String paddedBinaryString = String.
+        return String.
                 format("%1$" + length + "s", unpaddedBinaryString).
                 replace(' ', '0');
-        return paddedBinaryString;
     }
 
     private List<Integer> generateTour(String assignment) {
