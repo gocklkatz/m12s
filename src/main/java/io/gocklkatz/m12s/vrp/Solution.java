@@ -4,29 +4,19 @@ import java.util.List;
 
 public class Solution {
 
-    private List<Integer> route1;
-    private List<Integer> route2;
-    private double objectiveFunctionValue;
+    private List<Route> routes;
+    private double objectiveFunctionValue = Double.MAX_VALUE;
 
-    public Solution(List<Integer> route1, List<Integer> route2) {
-        this.route1 = route1;
-        this.route2 = route2;
+    public Solution(List<Route> routes) {
+        this.routes = routes;
     }
 
-    public List<Integer> getRoute1() {
-        return route1;
+    public List<Route> getRoutes() {
+        return routes;
     }
 
-    public void setRoute1(List<Integer> vehicle1) {
-        this.route1 = vehicle1;
-    }
-
-    public List<Integer> getRoute2() {
-        return route2;
-    }
-
-    public void setRoute2(List<Integer> route2) {
-        this.route2 = route2;
+    public void setRoutes(List<Route> routes) {
+        this.routes = routes;
     }
 
     public double getObjectiveFunctionValue() {

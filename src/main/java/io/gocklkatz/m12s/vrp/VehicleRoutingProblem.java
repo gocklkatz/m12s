@@ -1,5 +1,7 @@
 package io.gocklkatz.m12s.vrp;
 
+import io.gocklkatz.m12s.utils.CombinatoricHelper;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -13,28 +15,59 @@ public class VehicleRoutingProblem {
         checkMatrix();
     }
 
+    public Solution solveCompleteEnumerationNoCapacityConstraintOptimalTruckNumber(){
+
+        Solution bestSolution = new Solution(new ArrayList<>());
+
+        int n = 6; // Number of customers
+        int m = 6; // Number of trucks
+
+        List<List<Integer>> combinations = CombinatoricHelper.generateCombinations(n, m);
+
+        for(List<Integer> aufteilung : combinations){
+
+            List<Route> routes = aufteilung2routes(aufteilung);
+
+            List<Route> tspRoutes = new ArrayList<>();
+            TspSolver tspSolver = new TspSolver(distanceMatrix);
+            for(Route route : routes) {
+                tspRoutes.add(new Route(tspSolver.solve(route.stops())));
+            }
+
+            Solution solution = new Solution(tspRoutes);
+            solution.setObjectiveFunctionValue(calcZf(tspRoutes));
+
+            if (solution.getObjectiveFunctionValue() < bestSolution.getObjectiveFunctionValue()) {
+                bestSolution = solution;
+            }
+        }
+
+        return bestSolution;
+    }
+
     public Solution solveCompleteEnumerationNoCapacityConstraint(){
 
-        Solution bestSolution = new Solution(new ArrayList<>(), new ArrayList<>());
-        bestSolution.setObjectiveFunctionValue(Double.MAX_VALUE);
+        Solution bestSolution = new Solution(new ArrayList<>());
 
-        int length = 6;
-        int numberOfElements = (int) Math.pow(2,length);
+        int numberOfCustomers = distanceMatrix.size() - 1;
+
+        int numberOfElements = (int) Math.pow(2,numberOfCustomers);
 
         for(int i=1; i<numberOfElements-1; i++) {
 
-            String paddedBinaryString1 = generatePaddedBinaryString(i, length);
-            List<Integer> route1 = generateTour(paddedBinaryString1);
+            String paddedBinaryString1 = generatePaddedBinaryString(i, numberOfCustomers);
+            List<Integer> stops1 = generateTour(paddedBinaryString1);
 
-            String paddedBinaryString2 = generatePaddedBinaryString(numberOfElements - i - 1, length);
-            List<Integer> route2 = generateTour(paddedBinaryString2);
+            String paddedBinaryString2 = generatePaddedBinaryString(numberOfElements - i - 1, numberOfCustomers);
+            List<Integer> stops2 = generateTour(paddedBinaryString2);
 
             TspSolver tspSolver = new TspSolver(distanceMatrix);
-            List<Integer> bestTour1 = tspSolver.solve(route1);
-            List<Integer> bestTour2 = tspSolver.solve(route2);
+            Route route1 = new Route(tspSolver.solve(stops1));
+            Route route2 = new Route(tspSolver.solve(stops2));
+            List<Route> routes = new ArrayList<>(List.of(route1, route2));
 
-            Solution solution = new Solution(bestTour1, bestTour2);
-            solution.setObjectiveFunctionValue(calcZf(solution));
+            Solution solution = new Solution(routes);
+            solution.setObjectiveFunctionValue(calcZf(routes));
 
             if(solution.getObjectiveFunctionValue() < bestSolution.getObjectiveFunctionValue()) {
                 bestSolution = solution;
@@ -45,11 +78,12 @@ public class VehicleRoutingProblem {
     }
 
     public Solution singleSolutionNoCapacityConstraint() {
-        List<Integer> route1 = new ArrayList<>(List.of(3, 4, 5));
-        List<Integer> route2 = new ArrayList<>(List.of(6, 1, 2));
-        Solution solution = new Solution(route1, route2);
+        Route route1 = new Route(List.of(3, 4, 5));
+        Route route2 = new Route(List.of(6, 1, 2));
+        List<Route> routes = new ArrayList<>(List.of(route1, route2));
 
-        solution.setObjectiveFunctionValue(calcZf(solution));
+        Solution solution = new Solution(routes);
+        solution.setObjectiveFunctionValue(calcZf(routes));
 
         return solution;
     }
@@ -74,24 +108,47 @@ public class VehicleRoutingProblem {
         return tour;
     }
 
-    private double calcZf(Solution solution) {
+    private double calcZf(List<Route> routes) {
         double cost = 0;
-        cost += evalRoute(solution.getRoute1());
-        cost += evalRoute(solution.getRoute2());
+        for(Route route : routes) {
+            cost += evalRoute(route.stops());
+        }
         return cost;
     }
 
-    private double evalRoute(List<Integer> route) {
+    private double evalRoute(List<Integer> stops) {
         double cost = 0;
 
         int prev = 0;
-        for (int next : route) {
+        for (int next : stops) {
             cost += distanceMatrix.get(prev).get(next);
             prev = next;
         }
         cost += distanceMatrix.get(prev).getFirst();
 
         return cost;
+    }
+
+    private List<Route> aufteilung2routes(List<Integer> aufteilung) {
+
+        List<Route> routes = new ArrayList<>();
+
+        List<List<Integer>> collector = new ArrayList<>();
+        for(Integer xxx : aufteilung) {
+            collector.add(new ArrayList<>());
+        }
+
+        for(int i=0; i<collector.size(); i++){
+            collector.get(aufteilung.get(i)).add(i+1);
+        }
+
+        for (List<Integer> integers : collector) {
+            if (!integers.isEmpty()) {
+                routes.add(new Route(integers));
+            }
+        }
+
+        return routes;
     }
 
     private void checkMatrix() {
