@@ -26,7 +26,7 @@ public class VehicleRoutingProblem {
 
         for(List<Integer> combination : combinations){
 
-            List<Route> routes = aufteilung2routes(combination);
+            List<Route> routes = combinationToRoutes(combination);
 
             List<Route> tspRoutes = new ArrayList<>();
             TspSolver tspSolver = new TspSolver(distanceMatrix);
@@ -130,17 +130,16 @@ public class VehicleRoutingProblem {
         return cost;
     }
 
-    private List<Route> aufteilung2routes(List<Integer> aufteilung) {
+    private List<Route> combinationToRoutes(List<Integer> combination) {
 
         List<Route> routes = new ArrayList<>();
 
         List<List<Integer>> collector = new ArrayList<>();
-        for(Integer xxx : aufteilung) {
-            collector.add(new ArrayList<>());
-        }
+
+        combination.forEach(s -> collector.add(new ArrayList<>()));
 
         for(int i=0; i<collector.size(); i++){
-            collector.get(aufteilung.get(i)).add(i+1);
+            collector.get(combination.get(i)).add(i+1);
         }
 
         for (List<Integer> integers : collector) {
