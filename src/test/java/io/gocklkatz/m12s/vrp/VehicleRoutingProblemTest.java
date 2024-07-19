@@ -43,6 +43,7 @@ class VehicleRoutingProblemTest {
         VehicleRoutingProblem vrp = new VehicleRoutingProblem(matrix);
         Solution solution = vrp.solveCompleteEnumerationNoCapacityConstraintOptimalTruckNumber();
 
+        assertEquals(List.of(4, 6, 3, 1, 2, 5), solution.getRoutes().getFirst().stops());
         assertEquals(133, solution.getObjectiveFunctionValue());
     }
 
