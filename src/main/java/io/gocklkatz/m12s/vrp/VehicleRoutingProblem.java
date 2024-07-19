@@ -24,9 +24,9 @@ public class VehicleRoutingProblem {
 
         List<List<Integer>> combinations = CombinatoricHelper.generateCombinations(n, m);
 
-        for(List<Integer> aufteilung : combinations){
+        for(List<Integer> combination : combinations){
 
-            List<Route> routes = aufteilung2routes(aufteilung);
+            List<Route> routes = aufteilung2routes(combination);
 
             List<Route> tspRoutes = new ArrayList<>();
             TspSolver tspSolver = new TspSolver(distanceMatrix);
