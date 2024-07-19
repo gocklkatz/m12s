@@ -27,7 +27,7 @@ class VehicleRoutingProblemTest {
 
         assertEquals(List.of(3, 4, 5), solution.getRoutes().getFirst().stops());
         assertEquals(List.of(6, 1, 2), solution.getRoutes().get(1).stops());
-        assertEquals(solution.getObjectiveFunctionValue(), 163);
+        assertEquals(163, solution.getObjectiveFunctionValue());
     }
 
     @Test
