@@ -1,5 +1,6 @@
 package io.gocklkatz.m12s.vrp;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -9,8 +10,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class VehicleRoutingProblemTest {
     //https://www.youtube.com/watch?v=A1wsIFDKqBk&t=362s
-    List<List<Integer>> matrix = new ArrayList<>();
-    {
+    private static final List<List<Integer>> matrix = new ArrayList<>();
+
+    @BeforeAll
+    static void fillDistanceMatrix() {
         matrix.add(List.of(0,  20, 18, 14, 16, 12, 19));
         matrix.add(List.of(20,  0, 22, 18, 30, 26, 28));
         matrix.add(List.of(18, 22,  0, 32, 20, 22, 21));
