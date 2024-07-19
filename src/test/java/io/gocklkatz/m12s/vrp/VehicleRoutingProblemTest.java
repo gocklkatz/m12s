@@ -41,12 +41,15 @@ class VehicleRoutingProblemTest {
     }
 
     @Test
-    void solveCompleteEnumerationNoCapacityConstraintOptimalTruckNumberTest() {
+    void solveCompleteEnumerationNoCapacityConstraintGivenTruckNumberTest() {
         VehicleRoutingProblem vrp = new VehicleRoutingProblem(matrix);
-        Solution solution = vrp.solveCompleteEnumerationNoCapacityConstraintOptimalTruckNumber();
+        Solution solution = vrp.solveCompleteEnumerationNoCapacityConstraintGivenTruckNumber(4);
 
-        assertEquals(List.of(4, 6, 3, 1, 2, 5), solution.getRoutes().getFirst().stops());
-        assertEquals(133, solution.getObjectiveFunctionValue());
+        assertEquals(List.of(2 ,1 ,3), solution.getRoutes().getFirst().stops());
+        assertEquals(List.of(4), solution.getRoutes().get(1).stops());
+        assertEquals(List.of(5), solution.getRoutes().get(2).stops());
+        assertEquals(List.of(6), solution.getRoutes().get(3).stops());
+        assertEquals(166, solution.getObjectiveFunctionValue());
     }
 
 }

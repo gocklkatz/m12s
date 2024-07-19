@@ -15,7 +15,7 @@ public class VehicleRoutingProblem {
         checkMatrix();
     }
 
-    public Solution solveCompleteEnumerationNoCapacityConstraintOptimalTruckNumber(){
+    public Solution solveCompleteEnumerationNoCapacityConstraintGivenTruckNumber(int givenTruckNumber){
 
         Solution bestSolution = new Solution(new ArrayList<>());
 
@@ -37,7 +37,8 @@ public class VehicleRoutingProblem {
             Solution solution = new Solution(tspRoutes);
             solution.setObjectiveFunctionValue(calcZf(tspRoutes));
 
-            if (solution.getObjectiveFunctionValue() < bestSolution.getObjectiveFunctionValue()) {
+            if (solution.getObjectiveFunctionValue() < bestSolution.getObjectiveFunctionValue() &&
+                solution.getRoutes().size() >= givenTruckNumber) {
                 bestSolution = solution;
             }
         }
