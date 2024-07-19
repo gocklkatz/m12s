@@ -68,6 +68,41 @@ public class CombinatoricHelper {
     }
 
     /*
+     * Generate all different combinations of distributing n items into m buckets
+     */
+    public static List<List<Integer>> generateCombinations(int n, int m) {
+        List<List<Integer>> combinations = new ArrayList<>();
+        int[] indices = new int[n];
+
+        while (true) {
+            // Add current combination to the list
+            List<Integer> combination = new ArrayList<>();
+            for (int index : indices) {
+                combination.add(index);
+            }
+            combinations.add(combination);
+
+            // Find the rightmost index that can be incremented
+            int i;
+            for (i = n - 1; i >= 0; i--) {
+                if (indices[i] < m - 1) {
+                    indices[i]++;
+                    break;
+                } else {
+                    indices[i] = 0;
+                }
+            }
+
+            // If no index could be incremented, we are done
+            if (i < 0) {
+                break;
+            }
+        }
+
+        return combinations;
+    }
+
+    /*
      * Generate n by n matrix with random values 0 <= x < 10
      */
     public static List<List<Integer>> generateApSample(int n) {
