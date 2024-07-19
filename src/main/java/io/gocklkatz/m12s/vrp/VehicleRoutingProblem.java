@@ -19,8 +19,8 @@ public class VehicleRoutingProblem {
 
         Solution bestSolution = new Solution(new ArrayList<>());
 
-        int n = 6; // Number of customers
-        int m = 6; // Number of trucks
+        int n = distanceMatrix.size() - 1;; // Number of customers
+        int m = givenTruckNumber; // Number of trucks
 
         List<List<Integer>> combinations = CombinatoricHelper.generateCombinations(n, m);
 
