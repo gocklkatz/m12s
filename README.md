@@ -13,6 +13,6 @@ Implementation of metaheuristic optimization algorithms in Java
 - [Metaheuristic](https://en.wikipedia.org/wiki/Metaheuristic)
 - [Vehicle routing problem](https://en.wikipedia.org/wiki/Vehicle_routing_problem)
 
-## Wiki
+## Docs
 
-See [Wiki](https://github.com/gocklkatz/m12s/wiki) for more information
+See [Overview](https://github.com/gocklkatz/m12s/blob/main/docs/1_overview.md) for more information
